@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spending Reports</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .summary {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #e8f0fe;
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .category {
+            margin: 20px 0;
+        }
+
+        .bar {
+            background: #ddd;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            background: #4285f4;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #4285f4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Spending Reports</h1>
+    <p>View your spending habits and understand where your money goes.</p>
+
+    <div class="summary">
+        <div class="card">
+            <h3>Total Spending</h3>
+            <p id="total">$850.00</p>
+        </div>
+
+        <div class="card">
+            <h3>Monthly Budget</h3>
+            <p>$1,000.00</p>
+        </div>
+
+        <div class="card">
+            <h3>Remaining</h3>
+            <p>$150.00</p>
+        </div>
+    </div>
+
+    <h2>Spending by Category</h2>
+
+    <div class="category">
+        <p>Food - $300</p>
+        <div class="bar">
+            <div class="fill" style="width: 35%;"></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <p>Transportation - $150</p>
+        <div class="bar">
+            <div class="fill" style="width: 18%;"></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <p>Shopping - $200</p>
+        <div class="bar">
+            <div class="fill" style="width: 24%;"></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <p>Entertainment - $100</p>
+        <div class="bar">
+            <div class="fill" style="width: 12%;"></div>
+        </div>
+    </div>
+
+    <div class="category">
+        <p>Other - $100</p>
+        <div class="bar">
+            <div class="fill" style="width: 12%;"></div>
+        </div>
+    </div>
+
+    <button onclick="window.location.href='index.html'">
+        Back to Expense Tracker
+    </button>
+</div>
+
+</body>
+</html>
