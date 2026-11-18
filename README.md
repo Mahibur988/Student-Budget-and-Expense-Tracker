@@ -36,3 +36,16 @@ Jira will be used to organize epics, user stories, subtasks, story points, and s
 
 ## Project Status
 Planning and project setup in progress.
+
+## Deployment
+
+The Student Budget and Expense Tracker is deployed using Google Cloud Run.
+
+- **Cloud Platform:** Google Cloud
+- **Deployment Service:** Cloud Run
+- **Containerization:** Docker
+- **Web Server:** Nginx
+- **CI/CD:** Google Cloud Build connected to GitHub
+- **Deployment URL:** https://student-budget-tracker-794151840746.us-central1.run.app
+
+The application is automatically built and deployed when changes are pushed to the main branch of the GitHub repository.
