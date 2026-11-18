@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .budget-card {
+            background: #e8f5e9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        input, button {
+            padding: 12px;
+            margin: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #2e7d32;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1b5e20;
+        }
+
+        .progress {
+            background: #ddd;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: #4caf50;
+            height: 100%;
+            width: 0%;
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Monthly Budget Management</h1>
+
+    <div class="budget-card">
+        <h2>Monthly Budget</h2>
+        <h2 id="budgetDisplay">$0.00</h2>
+
+        <input type="number" id="budgetInput" placeholder="Enter monthly budget">
+
+        <button onclick="setBudget()">Set Budget</button>
+    </div>
+
+    <div class="budget-card">
+        <h2>Total Spent</h2>
+        <h2 id="spent">$0.00</h2>
+
+        <h2>Remaining Budget</h2>
+        <h2 id="remaining">$0.00</h2>
+    </div>
+
+    <h3>Budget Usage</h3>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <p id="warning"></p>
+
+</div>
+
+<script>
+
+    let monthlyBudget = 0;
+    let totalSpent = 0;
+
+    function setBudget() {
+        monthlyBudget = parseFloat(
+            document.getElementById("budgetInput").value
+        );
+
+        if (monthlyBudget <= 0 || isNaN(monthlyBudget)) {
+            alert("Please enter a valid budget.");
+            return;
+        }
+
+        updateBudget();
+    }
+
+    function updateBudget() {
+
+        let remaining = monthlyBudget - totalSpent;
+
+        document.getElementById("budgetDisplay").textContent =
+            "$" + monthlyBudget.toFixed(2);
+
+        document.getElementById("spent").textContent =
+            "$" + totalSpent.toFixed(2);
+
+        document.getElementById("remaining").textContent =
+            "$" + remaining.toFixed(2);
+
+        let percentage = (totalSpent / monthlyBudget) * 100;
+
+        document.getElementById("progressBar").style.width =
+            Math.min(percentage, 100) + "%";
+
+        if (totalSpent >= monthlyBudget) {
+            document.getElementById("warning").textContent =
+                "Warning: You have reached or exceeded your budget!";
+            document.getElementById("warning").className = "warning";
+        } else {
+            document.getElementById("warning").textContent =
+                "You are within your monthly budget.";
+        }
+    }
+
+</script>
+
+</body>
+</html>
