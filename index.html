@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,7 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-image: url('background.jpg');
+            background-image: url("Student Budget Tracker Study Desk.png");
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -31,59 +30,66 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.35);
+            background: rgba(240, 245, 240, 0.45);
             z-index: -1;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: auto;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.93);
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
         }
 
         h1 {
             text-align: center;
             color: #2c3e50;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            font-size: 32px;
         }
 
         h2 {
             color: #2c3e50;
         }
 
+        /* Total Expenses Card */
         .budget {
-            background: #e8f5e9;
-            padding: 25px;
-            border-radius: 12px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 30px;
+            border-radius: 15px;
             text-align: center;
-            margin-bottom: 25px;
-            border-left: 5px solid #2e7d32;
+            margin-bottom: 30px;
+            border-left: 6px solid #2e7d32;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.1);
         }
 
         .budget h2 {
             color: #1b5e20;
+            margin-bottom: 15px;
         }
 
         #total {
             color: #2e7d32;
-            font-size: 32px;
+            font-size: 36px;
+            font-weight: bold;
+            margin: 0;
         }
 
+        /* Form */
         form {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
+            gap: 12px;
+            margin-bottom: 30px;
         }
 
         input, select, button {
-            padding: 12px;
+            padding: 13px;
             border: 1px solid #ccc;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 14px;
         }
 
@@ -93,27 +99,36 @@
             background: white;
         }
 
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2e7d32;
+            box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
+        }
+
         button {
             background: #2e7d32;
             color: white;
             cursor: pointer;
             border: none;
-            transition: background 0.2s;
+            transition: 0.2s;
         }
 
         button:hover {
             background: #1b5e20;
+            transform: translateY(-1px);
         }
 
+        /* Expense Table */
         table {
             width: 100%;
             border-collapse: collapse;
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 10px;
+            background: white;
         }
 
         th, td {
-            padding: 12px;
+            padding: 14px;
             border-bottom: 1px solid #ddd;
             text-align: left;
         }
@@ -124,25 +139,49 @@
         }
 
         tr:hover {
-            background: #f8fff8;
+            background: #f5fff5;
         }
 
         .delete-btn {
             background: #d32f2f;
+            padding: 8px 12px;
         }
 
         .delete-btn:hover {
             background: #b71c1c;
         }
 
-        /* Mobile responsive design */
+        .empty-message {
+            text-align: center;
+            color: #777;
+            padding: 25px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            color: #666;
+            font-size: 13px;
+        }
+
+        /* Mobile Responsive Design */
         @media (max-width: 600px) {
+
             body {
                 padding: 15px;
             }
 
             .container {
                 padding: 20px;
+            }
+
+            h1 {
+                font-size: 25px;
+            }
+
+            #total {
+                font-size: 30px;
             }
 
             form {
@@ -170,17 +209,32 @@
 
     <h1>🎓 Student Budget Tracker</h1>
 
+    <!-- Total Expenses -->
     <div class="budget">
-        <h2>Total Expenses</h2>
+        <h2>💰 Total Expenses</h2>
         <h2 id="total">$0.00</h2>
     </div>
 
-    <h2>Add Expense</h2>
+    <!-- Add Expense -->
+    <h2>➕ Add Expense</h2>
 
     <form id="expenseForm">
-        <input type="text" id="expenseName" placeholder="Expense name" required>
 
-        <input type="number" id="amount" placeholder="Amount ($)" min="0.01" step="0.01" required>
+        <input
+            type="text"
+            id="expenseName"
+            placeholder="Expense name"
+            required
+        >
+
+        <input
+            type="number"
+            id="amount"
+            placeholder="Amount ($)"
+            min="0.01"
+            step="0.01"
+            required
+        >
 
         <select id="category" required>
             <option value="">Select Category</option>
@@ -189,17 +243,26 @@
             <option>Education</option>
             <option>Entertainment</option>
             <option>Shopping</option>
+            <option>Housing</option>
+            <option>Health</option>
             <option>Other</option>
         </select>
 
-        <input type="date" id="date" required>
+        <input
+            type="date"
+            id="date"
+            required
+        >
 
         <button type="submit">Add Expense</button>
+
     </form>
 
-    <h2>Expense History</h2>
+    <!-- Expense History -->
+    <h2>📊 Expense History</h2>
 
     <table>
+
         <thead>
             <tr>
                 <th>Name</th>
@@ -212,18 +275,30 @@
 
         <tbody id="expenseList">
         </tbody>
+
     </table>
+
+    <div class="footer">
+        Student Budget Tracker | Manage your money wisely 💚
+    </div>
 
 </div>
 
 <script>
+
     const expenseForm = document.getElementById("expenseForm");
     const expenseList = document.getElementById("expenseList");
     const totalDisplay = document.getElementById("total");
 
-    let expenses = [];
+    // Load saved expenses from browser
+    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
 
+    // Display expenses when page loads
+    displayExpenses();
+
+    // Add new expense
     expenseForm.addEventListener("submit", function(event) {
+
         event.preventDefault();
 
         const name = document.getElementById("expenseName").value;
@@ -240,17 +315,38 @@
 
         expenses.push(expense);
 
+        // Save expenses to browser
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+
         displayExpenses();
 
         expenseForm.reset();
+
     });
 
+    // Display expenses
     function displayExpenses() {
+
         expenseList.innerHTML = "";
 
         let total = 0;
 
+        if (expenses.length === 0) {
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td colspan="5" class="empty-message">
+                    No expenses yet. Add your first expense!
+                </td>
+            `;
+
+            expenseList.appendChild(row);
+
+        }
+
         expenses.forEach(function(expense, index) {
+
             total += expense.amount;
 
             const row = document.createElement("tr");
@@ -261,22 +357,35 @@
                 <td>${expense.category}</td>
                 <td>${expense.date}</td>
                 <td>
-                    <button class="delete-btn" onclick="deleteExpense(${index})">
+                    <button
+                        class="delete-btn"
+                        onclick="deleteExpense(${index})">
                         Delete
                     </button>
                 </td>
             `;
 
             expenseList.appendChild(row);
+
         });
 
+        // Update total expenses
         totalDisplay.textContent = "$" + total.toFixed(2);
+
     }
 
+    // Delete expense
     function deleteExpense(index) {
+
         expenses.splice(index, 1);
+
+        // Save updated expenses
+        localStorage.setItem("expenses", JSON.stringify(expenses));
+
         displayExpenses();
+
     }
+
 </script>
 
 </body>
